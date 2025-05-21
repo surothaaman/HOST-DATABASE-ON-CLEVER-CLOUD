@@ -21,12 +21,41 @@ Clever Cloud is a Platform as a Service (PaaS) designed to help businesses deplo
 The following Python code demonstrates how to connect to a MySQL database, perform basic database operations, and interact with the database using `mysql-connector-python`.
 
 ```python
-Your Code is Here
+  import mysql.connector
+  mydb=mysql.connector.connect(
+        host=#host,
+        database=#database,
+        user=#user,
+        password=#password)
+
+  mycursor= mydb.cursor()
+  mycursor.execute("CREATE TABLE test2(name VARCHAR(255),age int)")
+  sql ="INSERT INTO test2 (name,age) VALUES (%s,%s)"
+  val=("test1","1")
+
+  mycursor.execute(sql,val)
+  mybd.commit()
+  sql="UPDATE test2 SET name = 'test4' WHERE name = 'test1'"
+  mycursor.execute(sql)
+  mydb.commit()
+  mycursor.execute("SELECT *FROM test2")
+  myresult= mycursor.fetchall()
+
+  for x in myresult:
+          print(x)
+
+  sql="DELETE FROM test2 WHERE name='test4'"
+  mycursor.execute(sql)
+  mycursor.commit()
+
 ```
 
 ## Output
 
 The output will consist of the results from the `SELECT` query, which displays the contents of the `test2` table after performing various operations like inserting, updating, and deleting records.
+
+![image](https://github.com/user-attachments/assets/39775f72-289c-4d85-bd30-0fe1bdd14a04)
+
 
 ## Result
 
